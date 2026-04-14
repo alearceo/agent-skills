@@ -62,7 +62,17 @@ claude --plugin-dir /path/to/agent-skills
 <details>
 <summary><b>Cursor</b></summary>
 
-Copy any `SKILL.md` into `.cursor/rules/`, or reference the full `skills/` directory. See [docs/cursor-setup.md](docs/cursor-setup.md).
+**Plugin (recommended for `/spec`–`/ship` slash commands):** Install this repo as a Cursor plugin so Cursor loads [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). Slash commands are defined under [`.claude/commands/`](.claude/commands/) (the manifest’s `commands` path).
+
+```bash
+git clone https://github.com/alearceo/agent-skills.git
+cd agent-skills
+mkdir -p ~/.cursor/plugins/local
+ln -s "$(pwd)" ~/.cursor/plugins/local/agent-skills
+# or: cp -r "$(pwd)" ~/.cursor/plugins/local/agent-skills
+```
+
+Restart Cursor if needed. See [docs/cursor-setup.md](docs/cursor-setup.md) for rules, notepads, and alternatives.
 
 </details>
 
@@ -74,7 +84,7 @@ Install as native skills for auto-discovery, or add to `GEMINI.md` for persisten
 **Install from the repo:**
 
 ```bash
-gemini skills install https://github.com/addyosmani/agent-skills.git --path skills
+gemini skills install https://github.com/alearceo/agent-skills.git --path skills
 ```
 
 **Install from a local clone:**

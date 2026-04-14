@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Validate command frontmatter
+        run: bash scripts/validate-command-frontmatter.sh
+
       - name: Install Claude Code
         run: npm install -g @anthropic-ai/claude-code
 

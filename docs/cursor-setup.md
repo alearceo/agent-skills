@@ -1,8 +1,23 @@
 # Using agent-skills with Cursor
 
-## Setup
+## Cursor plugin (recommended for slash commands)
 
-### Option 1: Rules Directory (Recommended)
+To use the lifecycle commands (`/spec`, `/plan`, `/build`, `/test`, `/review`, `/code-simplify`, `/ship`), install this repository as a **Cursor plugin** so Cursor reads [`.cursor-plugin/plugin.json`](../.cursor-plugin/plugin.json). Slash command definitions live in [`.claude/commands/`](../.claude/commands/) (that is the `commands` path in the manifest).
+
+```bash
+git clone https://github.com/alearceo/agent-skills.git
+cd agent-skills
+mkdir -p ~/.cursor/plugins/local
+ln -s "$(pwd)" ~/.cursor/plugins/local/agent-skills
+```
+
+Alternatively, copy the clone into `~/.cursor/plugins/local/agent-skills` instead of symlinking. Restart Cursor if the plugin does not appear immediately.
+
+The same layout works if you open this repo from another path: the plugin root must contain `.cursor-plugin/plugin.json` and the rest of the repo (`skills/`, `agents/`, `hooks/`, etc.).
+
+## Setup (skills without the plugin)
+
+### Option 1: Rules Directory
 
 Cursor supports a `.cursor/rules/` directory for project-specific rules:
 
